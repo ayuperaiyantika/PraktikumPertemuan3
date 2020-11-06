@@ -1,0 +1,145 @@
+<html>
+<head>
+	<title>Tugas Implementasi Interface</title>
+</head>
+<body>
+<center>
+<h2 style="color: red;"> Tugas Implementasi Interface </h2>
+	<form action="" method="POST" name="formTugas">
+		<table> 
+		<tr>
+			<td> <input type="text" name="username" id="uname" placeholder="Username" required> </td>
+			<td> <input type="text" name="email" id="email" placeholder="Email" required> </td>
+		</tr>
+		
+		<tr> <tr>
+		
+		<tr>
+			<td> <input type="password" name="password" id="pass" placeholder="Password" required pattern = "/^[a-zA-Z0-9!@#\$%\^\&*_=+-]{8,12}$/g"> </td>
+			<td> <input type="password" name="repeat" id="repeat" placeholder="Ulangi Password" required> </td>
+		</tr>
+		<tr> <tr>
+		
+		<tr>
+			<td> <textarea id="alamat" style="width: 170px;" name ="alamat" placeholder="Alamat" required></textarea> </td>
+			<td> <input type="text" name="telp" id="telp" placeholder="Nomor Telepon" required> </td>
+		</tr>
+		
+		<tr> <tr>
+		
+		<tr>
+			<td colspan ="2"> <center> <input type="submit" name="" value="Submit" onclick="ValidateEmail(document.formTugas.email)" style="width: 350px;"> </center> </td>
+		</tr>
+		
+		<tr> <tr>
+		
+		</table>
+	</form>
+	
+	<h3> Ayu Peraiyantika - 3411181025 </h3>
+	<script type="text/javascript"> 
+	window.onload = function () {
+			document.getElementById("uname").onchange = validateUsername;
+			document.getElementById("pass").onchange = validatePasswordUlangi;
+			document.getElementById("pass").onchange = validatePass;
+			document.getElementById("repeat").onchange = validatePasswordUlangi;
+			document.getElementById("telp").onchange = validateTelpon;
+			document.getElementById("email").onchange = validateEmail;
+			document.getElementById("alamat").onchange = validateAlamat;		
+	}
+	
+	// Persoalan no 1 --> Username 3-15 karakter
+	function validateUsername(){
+		var user=document.getElementById("uname").value;		
+		if(user.length <3 || user.length>15){
+			alert("Username diisi dengan 3 - 15 karakter !!"); 
+			return false;
+		}
+
+		else{
+			return true;
+		}
+	}
+	
+	//Persoalan no 2 --> Password min 4 digit harus ada Huruf besar Symbol dan Angka
+	function validatePass(){
+		var userPass=document.getElementById("pass").value;	
+		if(userPass.length <4){
+			alert("Password minimal diisi 4 karakter !!"); 
+			return false;
+		}
+
+		else{
+			return true;
+		}
+	}
+	
+	//Persoalan no 3 --> Ulangi Password harus sama dengan Password
+	function validatePasswordUlangi(){
+		var pass2=document.getElementById("repeat").value;
+		var pass1=document.getElementById("pass").value;
+		if(pass1!=pass2)
+			document.getElementById("repeat").setCustomValidity("Passwords Tidak Sama , Ulangi Password!!");
+		else
+			document.getElementById("repeat").setCustomValidity('');
+	}
+	
+	
+	//Persoalan no 4 --> Email format email
+	function ValidateEmail(inputText)
+	{
+		var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/; 
+		if(inputText.value.match(mailformat))
+		{
+			document.formTugas.email.focus(); 
+			return true;
+		}
+		else
+		{
+			alert("Alamat email tidak valid!");
+			return false;
+		}
+	}
+	
+	//Persoalan no 5 --> Nomor Telepon harus 10 - 12 digit
+	function validateTelpon()
+	{
+		var telp=document.getElementById("telp").value;
+		if(isNaN(telp)){
+			alert("Nomor Telepon harus berupa angka !!"); 
+			return false;
+		}
+		else{
+			if(telp.length <10 || telp.length>12){
+				alert("Nomor Telepon harus 10 - 12 digit !!"); 
+				return false;
+			}
+
+			else{
+				return true;
+			}
+		}
+	}
+	
+	//Persoalan no 6 --> Alamat tidak boleh kosong
+	function validateAlamat()
+	{
+		var alamatt=document.getElementById("alamat").value;
+		if(alamatt ==""){
+			alert("Alamat tidak boleh kosong"); 
+			return false;
+		}
+		
+		else{
+			return true;
+		}
+	}
+
+</script>
+
+</center>
+</body>
+</html>
+
+
+
